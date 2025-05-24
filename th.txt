@@ -1,0 +1,69 @@
+DJANGO:
+framework:
+common logic:
+
+database connect... 20 30 lines
+business logic ... query 
+
+
+html : backend: id -->get
+frontend : id -->
+
+web framework         : web application
+ORM  ""               : hibernate,django orm, sq
+application framework : orm  + web + middlware
+
+frontend : django template  
+backend  : django
+
+arch:
+MVC :- model views controller
+
+
+client[browser]pview[controller]--> models
+
+1.x --> major  --> 2.x
+
+x  --> install   y
+
+virtual env
+
+pip install virtualenv
+
+d:
+ projects
+    batch-name[client-name [compnay-name]]
+	productname[projectname]
+          virtualevn venv 
+
+		to enable virualenv 
+		venv\Scripts\activate
+		
+	          pip install django
+			django-admin startproject learning
+			 cd learning
+				code .
+			   enable venv
+				python manage.py migrate
+			   python manage.py runserver
+				python manage.py createsuperuser
+				
+				django-admin startapp demo
+				create file urls.py
+				urlPattern[]
+				views file...
+					function call urls.py [demo]
+					demo.urls include leanin[urils.]	
+
+			
+		
+         
+
+C:\Python39\python.exe: can't open file 'D:\projects\weekend_django_mix\learning25\manage.py': [Errno 2] No such file or directory
+
+check dir
+
+user module:
+product :
+cart module:
+order module
