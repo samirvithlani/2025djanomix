@@ -14,4 +14,10 @@ def aboutUs(request):
     return render(request,"aboutus.html",{'company':company})
 
 def contactUs(request):
-    return render(request,"demo/contactus.html")
+    user = {
+        "name":"Amit",
+        "age":25,
+        "city":"Ahemdabad",
+        "salary":25800
+    }
+    return render(request,"demo/contactus.html",{"user":user})
