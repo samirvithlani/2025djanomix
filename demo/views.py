@@ -29,3 +29,12 @@ def studentList(request):
     #students = ["amit","raj","kunal","shyam","ram","hari"]
     students = []
     return render(request,"demo/studentlist.html",{'students':students})
+
+def products(request):
+    productData = [
+        {"name":"iphon1","price":1200,"qty":1,"color":"blue"},
+        {"name":"ipad ","price":1000,"qty":2,"color":"silver"},
+        {"name":"charger","price":200,"qty":2,"color":"black"},
+        {"name":"laptop","price":700,"qty":4,"color":"black"},
+    ]
+    return render(request,"demo/productList.html",{'products':productData})
