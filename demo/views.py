@@ -21,3 +21,11 @@ def contactUs(request):
         "salary":25800
     }
     return render(request,"demo/contactus.html",{"user":user})
+
+def studentList(request):
+    # students ={
+    #     "students":["amit","raj","kunal","shyam","ram","hari"]
+    # }
+    #students = ["amit","raj","kunal","shyam","ram","hari"]
+    students = []
+    return render(request,"demo/studentlist.html",{'students':students})
