@@ -71,4 +71,29 @@ order module
 
 DJANGO ORM: object relational mapping
 class -->database --> table
+
+
+database conf ... setts.py
+package pip install psycopg2
+installed 
+'demo'
+
+	python manage.py migrate
+superuser create...
+
+models.py : filelds...
+
+python manage.py makemigrations : files.. 0001
+python manage.py migrate : apply migrations
+
+
+filed add --> null true,blank true
+python manage.py makemigrations 
+python manage.py migrate
+
+admin panel:
+admin.py [demo]
+
+admin.site.register(Product)
+  
 	
