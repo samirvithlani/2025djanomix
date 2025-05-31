@@ -67,3 +67,8 @@ user module:
 product :
 cart module:
 order module
+
+
+DJANGO ORM: object relational mapping
+class -->database --> table
+	
