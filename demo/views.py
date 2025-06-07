@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Product
+from django.db.models import Q
+
 
 # Create your views here.
 def Home(request):
@@ -44,7 +46,43 @@ def getProducts(request):
     
     #select * from product;
     #ModelName.Objects.all()
-    products = Product.objects.all().values_list()
+    #products = Product.objects.all().values_list()
+    #print(f"Products: {products}")
+    # product = Product.objects.get(pk=1)
+    # print(f"Product: {product.id} {product.name} {product.price} {product.stock} {product.color} {product.status} {product.ratings}")
+    
+    #select * from product where status = true;
+    # products = Product.objects.filter(status = False).values()
+    # print(f"Products: {products}")
+    # products = Product.objects.filter(status = True,stock=1000).values()
+    # print(f"Products: {products}")
+    #orderby
+    
+    # products  = Product.objects.all().order_by('-stock').values()
+    # print(f"Products: {products}")
+    #[1:8:3]
+    #limit
+    #products = Product.objects.all()[:1].values()
+    #products = Product.objects.all().values_list('name','price')
+    #products = Product.objects.all().exclude(field_name="color").values()
+    #print(f"Products: {products}")
+    
+    #lookups
+    #products = Product.objects.filter(name__contains="t").values()
+    #products = Product.objects.filter(name__icontains="t").values()
+    #products = Product.objects.filter(name__startswith="t").values()
+    #products = Product.objects.filter(price__gt=1200).values()
+    #products = Product.objects.filter(price__gte=1200).values()
+    #products = Product.objects.filter(color__in=["silver","blue"]).values('name')
+    #range
+    #products = Product.objects.filter(price__range=(800,1200)).values('name')
+    
+    # true &
+    # false |
+    #or condiotns
+    products = Product.objects.filter(Q (name = "abc") | Q(name__contains="t") & Q(price__gte=100)).values('name')
+    #products = Product.objects.filter(~Q (name__contains="t")).values('name')
+    
     print(f"Products: {products}")
     
     
