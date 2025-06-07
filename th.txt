@@ -95,5 +95,9 @@ admin panel:
 admin.py [demo]
 
 admin.site.register(Product)
+
+[
+	{'id': 3, 'name': 'tshirt', 'description': 'polo t shirt', 'price': Decimal('100.00'), 'stock': 1000, 'created_at': datetime.datetime(2025, 5, 31, 14, 11, 47, 993733, tzinfo=datetime.timezone.utc), 'updated_at': datetime.datetime(2025, 5, 31, 14, 11, 47, 993733, tzinfo=datetime.timezone.utc), 'color': 'blue', 'status': True, 'ratings': 2}, 
+	{'id': 2, 'name': 'ipadmini', 'description': 'klomaosjjasnaslasm', 'price': Decimal('900.00'), 'stock': 100, 'created_at': datetime.datetime(2025, 5, 31, 14, 1, 48, 328572, tzinfo=datetime.timezone.utc), 'updated_at': datetime.datetime(2025, 5, 31, 14, 1, 48, 328572, tzinfo=datetime.timezone.utc), 'color': 'silver', 'status': True, 'ratings': 1}, {'id': 1, 'name': 'iphone16', 'description': 'whatever !!!', 'price': Decimal('1200.00'), 'stock': 22, 'created_at': datetime.datetime(2025, 5, 31, 13, 26, 6, 130100, tzinfo=datetime.timezone.utc), 'updated_at': datetime.datetime(2025, 5, 31, 13, 32, 11, 906523, tzinfo=datetime.timezone.utc), 'color': 'blue', 'status': True, 'ratings': 1}]
   
 	

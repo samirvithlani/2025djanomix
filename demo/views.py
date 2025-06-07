@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Product
 
 # Create your views here.
 def Home(request):
@@ -30,11 +31,21 @@ def studentList(request):
     students = []
     return render(request,"demo/studentlist.html",{'students':students})
 
-def products(request):
-    productData = [
-        {"name":"iphon1","price":1200,"qty":1,"color":"blue"},
-        {"name":"ipad ","price":1000,"qty":2,"color":"silver"},
-        {"name":"charger","price":200,"qty":2,"color":"black"},
-        {"name":"laptop","price":700,"qty":4,"color":"black"},
-    ]
-    return render(request,"demo/productList.html",{'products':productData})
+# def products(request):
+#     productData = [
+#         {"name":"iphon1","price":1200,"qty":1,"color":"blue"},
+#         {"name":"ipad ","price":1000,"qty":2,"color":"silver"},
+#         {"name":"charger","price":200,"qty":2,"color":"black"},
+#         {"name":"laptop","price":700,"qty":4,"color":"black"},
+#     ]
+#     return render(request,"demo/productList.html",{'products':productData})
+
+def getProducts(request):
+    
+    #select * from product;
+    #ModelName.Objects.all()
+    products = Product.objects.all().values_list()
+    print(f"Products: {products}")
+    
+    
+    return HttpResponse("Products fetch successfully..")
