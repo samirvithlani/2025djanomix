@@ -30,3 +30,28 @@ class Product(models.Model):
     
     def __str__(self):
         return self.name    
+
+#one to one
+
+class Wallet(models.Model):
+    name = models.CharField(max_length=100)
+    balance = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    class Meta:
+        db_table = "wallet"
+    
+    def __str__(self):
+        return self.name    
+
+
+class SwiggyUser(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.PositiveIntegerField()
+    wallet = models.OneToOneField(Wallet,on_delete=models.CASCADE,related_name="swiggy_user")
+    
+    class Meta:
+        db_table = "swiggy_user"    
+
+    def __str__(self):
+        return self.name
+    
