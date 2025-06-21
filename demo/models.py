@@ -54,4 +54,48 @@ class SwiggyUser(models.Model):
 
     def __str__(self):
         return self.name
+
+class Tournament(models.Model):
+    name = models.CharField(max_length=100)
+    date = models.DateField()
+    location = models.CharField(max_length=100)
+    
+    class Meta:
+        db_table = "tournament"
+    
+    def __str__(self):
+        return self.name
+class Teams(models.Model):
+    name = models.CharField(max_length=100)
+    tournament = models.ForeignKey(Tournament,on_delete=models.CASCADE,related_name="teams")
+    
+    class Meta:
+        db_table = "teams"
+    
+    def __str__(self):
+        return self.name             
+
+class Course(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    duration = models.PositiveIntegerField(help_text="Duration in hours")
+    
+    class Meta:
+        db_table = "course"
+    
+    def __str__(self):
+        return self.name
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.PositiveIntegerField()
+    course = models.ManyToManyField(Course)
+    
+    
+    class Meta:
+        db_table = "student"
+    
+    def __str__(self):
+        return self.name        
+    
     

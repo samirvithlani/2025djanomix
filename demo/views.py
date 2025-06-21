@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Product
+from .models import Product,SwiggyUser,Teams, Tournament,Student,Course
 from django.db.models import Q
 
 
@@ -89,3 +89,32 @@ def getProducts(request):
     return HttpResponse("Products fetch successfully..")
 
 
+def getSwiggyUser(request):
+    #users = SwiggyUser.objects.all().values()
+    #users = SwiggyUser.objects.select_related('wallet').get() #user ->wallet
+    #users = SwiggyUser.objects.all()
+    #print(f"Swiggy Users: {users}")
+    #print(f"wallter balance:",{users[0].wallet.balance})
+    users = SwiggyUser.objects.filter(wallet__balance__gt=10000)
+    print(f"{users[0].name} {users[0].wallet.balance}")
+    return HttpResponse("Swiggy User fetch successfully..")
+
+
+def getTeams(request):
+    teams = Teams.objects.all()
+    iplTeam = Teams.objects.filter(tournament__name="IPL")    
+    for i in iplTeam:
+        print(f"Team Name: {i.name} Tournament: {i.tournament.name}")
+        
+    return HttpResponse("Teams fetch successfully..")
+
+
+def getStudentDetail(request):
+    
+    students = Student.objects.all().values()
+    #student
+    #sourse
+    for  i in students:
+        print(i)
+    
+    return HttpResponse("Student Detail fetch successfully..")
