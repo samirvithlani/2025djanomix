@@ -110,11 +110,15 @@ def getTeams(request):
 
 
 def getStudentDetail(request):
-    
-    students = Student.objects.all().values()
-    #student
-    #sourse
-    for  i in students:
-        print(i)
-    
+    students = Student.objects.all()
+
+    for student in students:
+        print(f"Student: {student.name}, Age: {student.age}")
+        for course in student.course.all():
+            print(f"  Course: {course.name}, Price: {course.price}, Duration: {course.duration}")
+
     return HttpResponse("Student Detail fetch successfully..")
+
+#freelance
+#project
+#bid
