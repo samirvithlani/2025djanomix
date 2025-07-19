@@ -11,6 +11,21 @@ class ProductForm(forms.Form):
 class PhoneForm(ModelForm):   
     class Meta:
         model = Phone
-        fields=["brand","model","price","description","stock"]
+        fields = ["brand", "model", "price", "description", "stock"]
+    
+    def clean_price(self):
+        price = self.cleaned_data.get('price')
+        if price <= 0:
+            raise forms.ValidationError("Price must be greater than zero.")
+        return price
+    
+    def clean_stock(self):
+        stock = self.cleaned_data.get('stock')
+        if stock < 0:
+            raise forms.ValidationError("Stock cannot be negative.")
+        return stock    
+
+        
+        
 
     

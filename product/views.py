@@ -26,16 +26,13 @@ def createProduct(request):
     
 
 def createPhoneView(request):
-        phoneForm = PhoneForm()
-        
-        if request.method == "POST":
-            form = PhoneForm(request.POST)
-            #print(form.data["brand"])
-            if form.is_valid():
-                print(form.cleaned_data)
-                form.save()
-            
-        
-        return render(request,"product/createPhone.html",{"form":phoneForm})
+    if request.method == "POST":
+        form = PhoneForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = PhoneForm()
+
+    return render(request, "product/createPhone.html", {"form": form})
     
     
