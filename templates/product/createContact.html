@@ -1,0 +1,37 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% comment %} <form method="POST" novalidate>
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form> {% endcomment %}
+
+    <form method="POST" novalidate>
+        {% csrf_token %}
+         <div class="mb-3">
+            
+            {{form.name | as_crispy_field}}
+         </div>
+            <div class="mb-3">
+                
+                {{form.email | as_crispy_field}}
+            </div>
+            <div class="mb-3">
+                
+                {{form.message | as_crispy_field}}
+            </div>
+            <div>
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
+            
+        
+    </form>
+</body>
+</html>

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import ProductForm,PhoneForm
+from .forms import ProductForm,PhoneForm, ContactForm
 from .models import Product
 
 # Create your views here.
@@ -35,4 +35,12 @@ def createPhoneView(request):
 
     return render(request, "product/createPhone.html", {"form": form})
     
-    
+def createContactView(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = ContactForm()
+
+    return render(request, "product/createContact.html", {"form": form})
