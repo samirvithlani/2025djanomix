@@ -24,10 +24,11 @@
                         <td>{{emp.id}}</td>
                         <td>{{emp.name}}</td>
                         <td></td>
-                        <td></td>
+                        <td>{{emp.age}}</td>
                         <td></td>
                         <td>
                             <a href="{% url 'delete_employee' emp.id %}">DELETE</a>
+                            <a href="{% url 'update_employee' emp.id %}">UPDATE</a>
                         </td>
                     </tr>
             {% endfor %}

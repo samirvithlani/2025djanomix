@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Phone,Contact
+from .models import Phone,Contact,Car
 
 class ProductForm(forms.Form):
     name = forms.CharField(max_length=100, label='Product Name')
@@ -31,4 +31,8 @@ class ContactForm(ModelForm):
         model = Contact
         fields = "__all__"
 
-    
+
+class CarForm(ModelForm):
+    class Meta:
+        model =Car
+        fields = "__all__"    

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from . import forms
 from . import models
 
@@ -32,3 +32,21 @@ def delete_employee(request,pk):
         return redirect("list_employee")
     
     return render(request,"employee/delete_confirm.html",{"employee":employee})         
+
+
+def update_employee(request,pk):
+    employee = get_object_or_404(models.Employee,pk=pk)
+    form = forms.EmployeeForm(instance=employee)
+    if request.method =="POST":
+        form = forms.EmployeeForm(request.POST,instance = employee)
+        if form.is_valid():
+            form.save()
+            return redirect('list_employee')
+        else:
+            form = forms.EmployeeForm(instance=employee)
+            
+    return render(request,"employee/employee_create.html",{"form":form})        
+            
+            
+        
+    

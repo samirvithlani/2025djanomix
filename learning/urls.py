@@ -22,4 +22,5 @@ urlpatterns = [
     path('demo/',include("demo.urls")),
     path('product/',include("product.urls")),
     path('employee/',include("employee.urls")),
+    path('cbv/',include("cbv.urls")),
 ]

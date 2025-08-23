@@ -7,4 +7,6 @@ urlpatterns = [
     path("createProduct/",views.createProduct),
     path("createPhone/",views.createPhoneView),
     path("createContact/",views.createContactView),
+    path("createcar/",views.carCreateView),
+    path("carlist",views.carListView)
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .forms import ProductForm,PhoneForm, ContactForm
-from .models import Product
+from .forms import ProductForm,PhoneForm, ContactForm,CarForm
+from .models import Product,Car
 
 # Create your views here.
 
@@ -44,3 +44,20 @@ def createContactView(request):
         form = ContactForm()
 
     return render(request, "product/createContact.html", {"form": form})
+
+
+
+def carCreateView(request):
+    form = CarForm()
+    if request.method == "POST":
+        form = CarForm(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            form = CarForm()
+    
+    return render(request,"car/createCar.html",{"form":form})            
+                
+def carListView(request):
+    cars =  Car.objects.select_related("model").all()
+    return render(request,"car/carlist.html",{"cars":cars})
