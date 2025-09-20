@@ -6,7 +6,8 @@ from . import models
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from django.conf import settings
-from .forms import CustomAuthenticationForm
+from .forms import CustomAuthenticationForm,CustomeUserCreationForm
+from django.contrib.auth import login
 # Create your views here.
 #View
 class MyView(View):
@@ -86,6 +87,17 @@ class CustomeLoginView(LoginView):
         
         return super().form_valid(form)    
         
+
+class UserRegisterView(CreateView):
+    template_name = "accounts/register.html"    
+    form_class = CustomeUserCreationForm
+    success_url = reverse_lazy("home")
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)    
+        user = form.save()
+        login(self.request,user)
+        return response
     
     
 
