@@ -4,6 +4,9 @@ from django.views.generic import TemplateView,ListView,DetailView
 from django.views.generic.edit import CreateView
 from . import models
 from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView
+from django.conf import settings
+from .forms import CustomAuthenticationForm
 # Create your views here.
 #View
 class MyView(View):
@@ -69,4 +72,21 @@ class SportsDetailView(DetailView):
         return super().get_queryset()
     
     
+class CustomeLoginView(LoginView):
+    template_name = "accounts/login.html"
+    authentication_form = CustomAuthenticationForm
+    redirect_authenticated_user =True
+    
+    def form_valid(self, form):
+        remember = form.cleaned_data.get("remember_me")
+        if remember:
+            self.request.session.set_expiry(settings.SESSION_COOKIE_AGE)
+        else:
+            self.request.session.set_expiry(0)    
+        
+        return super().form_valid(form)    
+        
+    
+    
+
     
