@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.admin', #auth_user
+    'django.contrib.auth',  #auth_user
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "crispy_forms",  # For crispy forms
     "crispy_bootstrap5",  # For Bootstrap 5 support
     "employee",
-    "cbv"
+    "cbv",
+    "core"
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,5 @@ LOGIN_URL="login"
 LOGIN_REDIRECT_URL="home"
 LOGOUT_REDIRECT_URL="login"
 SESSION_COOKIE_AGE= 1209600
+
+AUTH_USER_MODEL="core.CustomUser"

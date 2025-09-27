@@ -23,4 +23,5 @@ urlpatterns = [
     path('product/',include("product.urls")),
     path('employee/',include("employee.urls")),
     path('cbv/',include("cbv.urls")),
+    path('auth/',include('core.urls'))
 ]
